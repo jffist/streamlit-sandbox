@@ -18,7 +18,7 @@ def generate_rand_data():
     return df
 
 df = generate_rand_data()
-st.line_chart(df,x='x', y=['y2','y3'])
+st.line_chart(df, x='x', y=['y2','y3'])
 
 #st.write(df.head(3))
 #st.table(df.head(3))
@@ -41,7 +41,7 @@ if st.checkbox('Show me the map'):
     st.map(map_data)
 
 ### widgets
-x = st.slider('x',0,20,3)  # 👈 this is a widget
+x = st.slider('this is input for var x', 0, 20, 3)  # 👈 this is a widget
 st.write(x, 'squared is', x * x)
 
 
@@ -77,6 +77,7 @@ add_slider = st.sidebar.slider(
     'Select a range of values',
     0.0, 100.0, (25.0, 75.0)
 )
+st.sidebar.write("Selected range from", add_slider[0], ' to ', add_slider[1])
 
 
 left_column, right_column = st.columns(2)
@@ -90,3 +91,12 @@ with right_column:
         'Sorting hat',
         ("Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"))
     st.write(f"You are in {chosen} house!")
+st.write('----')
+with st.expander("**Hidden gem or jam**", expanded=False):
+    st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
+    st.write("""
+        The chart above shows some numbers I picked for you.
+        I rolled actual dice for these, so they're *guaranteed* to
+        be random.
+    """)
+    st.image("https://static.streamlit.io/examples/dice.jpg")
